@@ -35,7 +35,7 @@ for the other users: like all the other Python tools.
 - **sum_Charge-CM5**: Sum of CM5 charges (Q-CM5) for selected atoms
 
 ## Citation
-J.G. Vitillo, molplane, https://github.com/jennygvitillo/molplane (2025).
+J.G. Vitillo, 'molplane', https://github.com/jennygvitillo/molplane (2025).
 
 ## Italiano
 Strumento **Python** per analizzare file output di Gaussian 16 da calcoli di ottimizzazione geometria. Calcola planarità molecolare e somme di cariche di Hirshfeld. Interfaccia grafica per selezione interattiva degli atomi e salva i risultati in file CSV (con estensione TXT) e XYZ.
