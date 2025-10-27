@@ -17,8 +17,9 @@ Calculates molecular dimensions, planarity (best-fit plane distances), and Hirsh
 - Must contain `Geom=AllCheck` section with optimized coordinates
 - Hirshfeld charge section must be present for charge analysis (pop=hirshfeld)
 
-## How to run it on Windows
-Detailed instructions on how to run the script are reported at the beginning of the script.
+## How to run it
+(on Windows, for dummies) Detailed instructions on how to run the script are reported at the beginning of the script.
+for the other users: like all the other Python tools.
 
 ## Output files
 **XYZ file**
