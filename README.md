@@ -36,6 +36,18 @@ for the other users: like all the other Python tools.
 ## Citation
 J.G. Vitillo, molplane, https://github.com/jennygvitillo/molplane (2025).
 
+## Italiano
+Strumento **Python** per analizzare file output di Gaussian 16 da calcoli di ottimizzazione geometria. Calcola planarità molecolare e somme di cariche di Hirshfeld. Interfaccia grafica per selezione interattiva degli atomi e salva i risultati in file CSV (con estensione TXT) e XYZ.
 
+- **Calcolo planarità molecolare** - determina il piano migliore per atomi selezionati e calcola la distanza media
+- **Dimensioni molecolari** - calcola l'estensione sopra e sotto il piano lungo la normale
+- **Cariche di Hirshfeld** - somma cariche Q-H, spin S-H e cariche CM5 Q-CM5 per gli atomi selezionati
+- **Visualizzazione 3D interattiva** - interfaccia grafica per selezione atomi con matplotlib
+- **Esportazione multipla** - file CSV con tutte le metriche e file XYZ con geometrie ottimizzate
+- **Elaborazione file singolo** - selezione interattiva del file .log/.out da analizzare
+- **File di output** - salvati in directory "Planarity_Analysis_Results" con nome file_input_planarity.txt
+
+**Dipendenze**: numpy, matplotlib
+**Istruzioni dettagliate** su come usare lo script sono riportate nella parte iniziale dello script stesso (file: molplane.py).
 
 
