@@ -112,6 +112,16 @@ Technical Details:
 - Normalization: All distances in Angstroms (Å)
 
 
+Author:
+---------
+Jenny G. Vitillo (University of Insubria) and DeepSeek
+
+
+License:
+---------
+MIT
+
+
 Citation:
 ---------
 
