@@ -13,7 +13,8 @@ Calculates molecular dimensions, planarity (best-fit plane distances), and Hirsh
 - **Multi-format Export**: CSV files with all metrics + XYZ files with optimized geometries
 
 ## Input Requirements
-- Gaussian 16 output files (.out, .log) from **geometry optimization AND frequency** calculations
+- Gaussian 16 output files (.out, .log) from **geometry optimization AND frequency** calculations (actually frequency calculations does
+  not have finished, what it is important is to have the optimized structure at the end)
 - Must contain `Geom=AllCheck` section with optimized coordinates
 - Hirshfeld charge section must be present for charge analysis (pop=hirshfeld)
 
@@ -40,6 +41,7 @@ J.G. Vitillo, molplane, https://github.com/jennygvitillo/molplane (2025).
 Strumento **Python** per analizzare file output di Gaussian 16 da calcoli di ottimizzazione geometria. Calcola planarità molecolare e somme di cariche di Hirshfeld. Interfaccia grafica per selezione interattiva degli atomi e salva i risultati in file CSV (con estensione TXT) e XYZ.
 
 **Necessario che l'output contenga sia ottimizzazione che calcolo delle frequenze**
+(in realtà basta che abbia scritto l'intestazione del calcolo delle frequenze e abbia stampato la geometria, non deve aver finito le frequenze)
 
 - **Calcolo planarità molecolare** - determina il piano migliore per atomi selezionati e calcola la distanza media
 - **Dimensioni molecolari** - calcola l'estensione sopra e sotto il piano lungo la normale
