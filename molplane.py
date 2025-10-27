@@ -124,7 +124,7 @@ MIT
 
 Citation:
 ---------
-J.G. Vitillo, molplane, https://github.com/jennygvitillo/molplane (2025).
+J.G. Vitillo, 'molplane', https://github.com/jennygvitillo/molplane (2025).
 Additionally, please cite relevant Gaussian and Hirshfeld methodology references.
 """
 
