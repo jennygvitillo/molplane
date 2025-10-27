@@ -17,7 +17,13 @@ Calculates molecular dimensions, planarity (best-fit plane distances), and Hirsh
 - Must contain `Geom=AllCheck` section with optimized coordinates
 - Hirshfeld charge section must be present for charge analysis (pop=hirshfeld)
 
-*Output columns of the CSV file:*
+## How to run it on Windows
+Detailed instructions on how to run the script are reported at the beginning of the script.
+
+## Output files
+**XYZ file**
+
+**CSV file** having as columns:
 - **Filename**: Input Gaussian output file name
 - **AvgDistance** (Å): Average distance of selected atoms from best-fit plane  
 - **DimensionAbove** (Å): Maximum molecular extension above the plane
@@ -25,4 +31,10 @@ Calculates molecular dimensions, planarity (best-fit plane distances), and Hirsh
 - **sum_Spin-Hirshfeld**: Sum of Hirshfeld spin densities (S-H) for selected atoms
 - **sum_Charge-Hirshfeld**: Sum of Hirshfeld charges (Q-H) for selected atoms  
 - **sum_Charge-CM5**: Sum of CM5 charges (Q-CM5) for selected atoms
-- 
+
+## Citation
+J.G. Vitillo, molplane, https://github.com/jennygvitillo/molplane (2025).
+
+
+
+
