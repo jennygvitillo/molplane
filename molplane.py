@@ -1,3 +1,124 @@
+#!/usr/bin/env python3
+"""
+Molecular Planarity Analyzer for Gaussian Output Files
+======================================================
+
+Description:
+------------
+This script analyzes molecular planarity and charge properties from Gaussian 16 
+output files. It calculates best-fit planes, molecular dimensions, and sums 
+Hirshfeld charges for selected atom groups. Perfect for studying planar 
+conjugated systems and charge distribution in molecular cores.
+
+Key Features:
+-------------
+- Interactive 3D molecular visualization and atom selection
+- Best-fit plane calculation using SVD (Singular Value Decomposition)
+- Molecular dimension analysis along plane normal direction
+- Automated extraction and summation of Hirshfeld charges (Q-H, S-H, Q-CM5)
+- Export results to CSV and XYZ formats
+- User-friendly graphical interface
+
+Workflow:
+---------
+1. Input: Gaussian 16 output file (.out or .log) from geometry optimization
+2. 3D Visualization: Interactive molecular structure display
+3. Atom Selection: Choose atoms for plane calculation (≥3 atoms)
+4. Analysis: Automatic calculation of planarity, dimensions, and charge sums
+5. Output: CSV file with metrics + XYZ file with optimized geometry
+
+Requirements:
+-------------
+- Python 3.6+ (I am using Windows: so I have installed PyCharm and this program 
+  deals with all the Python stuff, very convenient)
+- NumPy (for mathematical calculations)
+- Matplotlib (for 3D visualization)
+
+Installation for Dummies:
+-------------------------
+0. If you don't have it, download and install PyCharm Community Edition: 
+   it makes running Python scripts much easier.
+
+1. Create and open the project in PyCharm.
+   - Open PyCharm and create a **new project**. You can name it molplane.  
+   - On the top left, you'll see something that looks like a folder.  
+   - **Right-click** on it → choose **New → Python File**.  
+   - Name it `molplane.py` and press **Enter**.  
+   - Copy and paste the entire script into the text area that appears.  
+   - Go to **File → Save All**.
+
+2. Install required packages:
+   - Open Terminal in PyCharm (small icon on the bottom left)
+   - Type these commands one by one:
+     pip install numpy
+     pip install matplotlib
+   - Wait for installation to complete
+  Just so you know, this is necessary only the first time you are using this script on your laptop.
+
+3. To run the script:
+   - Click the green "Play" button above the text area
+   - OR right-click in the script and select "Run 'molplane'"
+   - Follow the on-screen instructions to select your Gaussian file
+
+Usage:
+------
+1. Run the script
+2. Select your Gaussian output file (.out or .log) using the file dialog
+3. In the 3D visualization window:
+   - Rotate: Click and drag to rotate the molecule
+   - Select atoms: Click on atoms in the list (≥3 atoms required)
+   - Selected atoms will be highlighted in the 3D view
+4. Click "Confirm Selection" to proceed with analysis
+5. View results in the pop-up window and check the output files
+
+
+Input Requirements:
+-------------------
+- Gaussian 16 output file from geometry optimization calculation
+- Must contain optimized coordinates (Geom=AllCheck section)
+- Must include frequency calculation section in the route (even if not completed)
+- For charge analysis: must include Hirshfeld charges section (from frequency calculation)
+
+Note: The frequency calculation doesn't need to be completed - the script only 
+requires that the frequency job was initiated and the optimized geometry was 
+printed. Failed frequency calculations that still output the geometry are perfectly acceptable.
+
+
+Output:
+-------
+- CSV file (with .txt extension): Contains all calculated metrics
+  - Filename, AvgDistance, DimensionAbove, DimensionBelow
+  - sum_Spin-Hirshfeld, sum_Charge-Hirshfeld, sum_Charge-CM5
+- XYZ file: Optimized molecular geometry for further analysis
+- Files are saved in "Planarity_Analysis_Results" folder
+
+
+Troubleshooting:
+----------------
+- "No coordinates found": Check your file contains optimized geometry
+- "No Hirshfeld charges": File missing frequency calculation section
+- "Module not found": Run pip install for missing packages
+- 3D view not displaying: Ensure matplotlib is properly installed
+- Atom selection not working: Make sure to select ≥3 atoms
+- "Frequency section missing": Ensure your Gaussian calculation includes 'freq' 
+  in the route section, even if the frequency calculation didn't complete
+
+  
+Technical Details:
+------------------
+- Plane fitting: Singular Value Decomposition (SVD) on selected atom coordinates
+- Planarity metric: Average absolute distance from best-fit plane
+- Charge summation: Sum of Hirshfeld properties for selected atoms only
+- Normalization: All distances in Angstroms (Å)
+
+
+Citation:
+---------
+
+Additionally, please cite relevant Gaussian and Hirshfeld methodology references.
+"""
+
+
 import os
 import sys
 import csv
@@ -7,13 +128,6 @@ from tkinter import filedialog, messagebox, ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d import Axes3D
-
-# Python script created by Jenny G. Vitillo, University of Insubria, and DeepSeek 2024
-
-# For users not familiar with Python, before running the script, run from the terminal (in PyCharm, to open it Alt+F12)
-# pip install numpy                                                                                         
-# pip install matplotlib
-# if it is the first time you are using this script in your laptop
 
 # Color map for elements (CPK colors)
 ELEMENT_COLORS = {
